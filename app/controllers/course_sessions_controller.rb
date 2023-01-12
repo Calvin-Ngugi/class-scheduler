@@ -1,43 +1,32 @@
 class CourseSessionsController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
-rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
+    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    before_action :require_admin, except: [:index, :show]
 
     def index
         render json: CourseSession.all, status: :ok
     end
-
+    
     def show
         course_session = CourseSession.find_by(id: params[:id])
         render json: course_session, status: :ok
     end
 
     def create
-        if current_user.role == "instructor"
-            course_session = CourseSession.create(session_params)
-            render json: course_session, status: :created
-        else
-            render json: {errors: ["You are not authorized for this"]}, status: :unauthorized
-        end
+        course_session = CourseSession.create(session_params)
+        render json: course_session, status: :created
     end
 
     def update
-        if current_user.role == "instructor"    
-            course_session = CourseSession.find_by(id: params[:id])
-            course_session.update!(session_params)
-            render json: course_session, status: :updated
-        else
-            render json: {errors: ["You are not authorized for this"]}, status: :unauthorized
-        end
+        course_session = CourseSession.find_by(id: params[:id])
+        course_session.update!(session_params)
+        render json: course_session, status: :updated
     end
 
     def destroy
-        if current_user.role == "instructor"
-            course_session = CourseSession.find_by(id: params[:id])
-            course_session.destroy
-            head :no_content
-        else    
-            render json: {errors: ["You are not authorized for this"]}, status: :unauthorized
-        end
+        course_session = CourseSession.find_by(id: params[:id])
+        course_session.destroy
+        head :no_content
     end
 
     private
@@ -50,10 +39,12 @@ rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
     end
 
     def session_params
-        params.permit(:session_name, :description, :date, :time, :invitation_link, :user_id, :course_id)
+        params.permit(:session_name, :description, :date, :time, :invitation_link, :course_id)
     end
 
-    def current_user
-        user = User.find_by(id: params[:user_id])
+    def require_admin
+        unless current_user.try(:instructor?) || current_user.role == "instructor"
+            render json: {error: "You are not authorized to perform this action."}, status: :unauthorized
+        end
     end
 end
