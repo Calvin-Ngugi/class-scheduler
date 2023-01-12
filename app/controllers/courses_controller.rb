@@ -1,6 +1,10 @@
 class CoursesController < ApplicationController
-    before_action :authorize
+    before_action :authorize, except: [:index]
+    #index create update delete
     #only login users is admin all allow to add new course
+     def index
+     end
+
      def create
         course = Course.create(course_params);
         if course.valid?
@@ -10,13 +14,19 @@ class CoursesController < ApplicationController
         end
      end
 
+     def update
+     end
+     
+     def destroy
+     end
+
     private
     def authorize
-        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :admin_id
+        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
     end
 
-    def check_admin
-      User.find_by(id: session[:admin_id])
+    def check_user
+      User.find_by(id: session[:user_id])
     end
 
     def course_params
