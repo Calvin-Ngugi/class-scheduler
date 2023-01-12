@@ -1,7 +1,7 @@
 class AnnouncementsController < ApplicationController
     before_action :find_announcement, only: [:show, :update, :destroy]
     before_action :authenticate_user! ,except: [:show,:index]
-
+    #require './path/to/authfile'
 
     def index
         render json: Announcement.all
@@ -32,7 +32,7 @@ class AnnouncementsController < ApplicationController
     private
 
     def announcement_params
-        params.permit(:course_id, :title, :content,:user_id)
+        params.permit(:course_id, :title, :content)
     end
 
     def find_announcement
