@@ -1,14 +1,15 @@
 class AnnouncementsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
+    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    before_action :require_admin, except: [:index, :show]
     before_action :find_announcement, only: [:show, :update, :destroy]
-    before_action :authenticate_user! ,except: [:show,:index]
-    #require './path/to/authfile'
 
     def index
         render json: Announcement.all
     end
 
     def show
-        render json: @announcement
+        render json: @announcement, status: :ok
     end
 
     def create
@@ -21,8 +22,7 @@ class AnnouncementsController < ApplicationController
 
     def update
         @announcement.update!(announcement_params)
-        render json: @announcement, status: :ok
-    end
+        render json: @announcement,  status: :updated
 
     def destroy
         @announcement.destroy
@@ -37,5 +37,19 @@ class AnnouncementsController < ApplicationController
 
     def find_announcement
         @announcement = Announcement.find(params[:id])
+    end
+
+    def rescue_from_not_found_record
+        render json: {error: "Review not found"}, status: :not_found 
+    end
+
+    def rescue_from_invalid_record(e)
+        render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity 
+    end
+
+    def require_admin
+        unless current_user.try(:instructor?) || current_user.role == "instructor"
+            render json: {error: "You are not authorized to perform this action."}, status: :unauthorized
+        end
     end
 end
