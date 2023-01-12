@@ -1,8 +1,6 @@
 class ProfilesController < ApplicationController
-    before_action :authorize, except: [:index, :show]
-    #index create update delete
+     before_action :authorize, except: [:index, :show]
      def create
-        user = check_user
         profile = Profile.create(profile_params);
         if profile.valid?
             render json: profile, status: :created
@@ -19,19 +17,15 @@ class ProfilesController < ApplicationController
 
     private
     def authorize
-        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
+        return render json: {errors: ["Profile not Found"]}, status: :unauthorized unless session.include? :user_id
     end
 
-    def check_user
-      User.find_by(id: session[:user_id])
-    end
-
-    def find_course
-      Course.find_by(id: params[:id])
+    def find_profile
+      Profile.find_by(id: params[:id])
     end
 
     def profile_params
-        params.permit(:First_name,:description)
+        params.permit(:First_name,:Last_name,:gender,:bio,:profile_img)
     end
 end
 
