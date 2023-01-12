@@ -1,11 +1,5 @@
-class CourseSessionsController < ApplicationController
+class CoursesController < ApplicationController
     before_action :authorize
-
-    #display courses only when user is login
-    def index
-        admin = check_admin
-        render json: Course.all, status: :created
-    end
     #only login users is admin all allow to add new course
      def create
         course = Course.create(course_params);
@@ -14,7 +8,7 @@ class CourseSessionsController < ApplicationController
         else
             render json: {errors: course.errors.full_messages} , status: :unprocessable_entity
         end
-    end
+     end
 
     private
     def authorize
