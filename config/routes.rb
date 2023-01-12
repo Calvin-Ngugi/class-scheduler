@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :course_sessions
+  resources :courses
   
   post '/signup', to: 'users#create'
   get '/me', to: "users#show"

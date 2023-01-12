@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
-    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    rescue_from ActiveRecord::RecordInvalid, with: :rescue_from_invalid_record
     before_action :require_admin, except: [:index, :show]
      def index
          render json: Course.all, status: :ok
