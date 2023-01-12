@@ -1,20 +1,19 @@
 class CoursesController < ApplicationController
-    before_action :authorize, except: [:index]
-    #index create update delete
-
+    rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
+    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    before_action :require_admin, except: [:index, :show]
      def index
-        user = check_user
-        render json: Course.all, status: :created
+         render json: Course.all, status: :ok
+     end
+
+     def show
+        course = find_course
+        render json: course, status: :ok
      end
 
      def create
-        user = check_user
         course = Course.create(course_params);
-        if course.valid?
-            render json: course, status: :created
-        else
-            render json: {errors: course.errors.full_messages} , status: :unprocessable_entity
-        end
+        render json: course, status: :created
      end
 
      def update
@@ -24,23 +23,18 @@ class CoursesController < ApplicationController
      end
 
      def destroy
-        user = check_user
         course = find_course
-        if course
-          course.delete
-          head :no_content
-        else
-          render json: {errors: ["Not authorized"]}, status: :unauthorized
-        end
+        course.destroy
+        head :no_content
      end
 
     private
-    def authorize
-        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
+    def rescue_from_not_found_record
+        render json: {error: "Course not found"}, status: :not_found
     end
 
-    def check_user
-      User.find_by(id: session[:user_id])
+    def rescue_from_invalid_record(e)
+        render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity
     end
 
     def find_course
@@ -50,5 +44,12 @@ class CoursesController < ApplicationController
     def course_params
         params.permit(:name,:description)
     end
+
+     def require_admin
+        unless current_user.try(:instructor?) || current_user.role == "instructor"
+            render json: {error: "You are not authorized to perform this action."}, status: :unauthorized
+        end
+    end
+
 end
 
