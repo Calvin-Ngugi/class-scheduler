@@ -1,4 +1,5 @@
 puts "Start seeding...."
+
     User.destroy_all
     Course.destroy_all
     Announcement.destroy_all
@@ -29,4 +30,5 @@ puts "Start seeding...."
     comment5 = Comment.create(content: "You can go back and do more research on this topic.", user_id: 1, course_session_id: 4)
     comment6 = Comment.create(content: "This one was a bit mbadala.", user_id: 2, course_session_id: 4)
     comment7 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 5)
+
 puts "Done seeding."

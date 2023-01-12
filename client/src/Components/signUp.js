@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Error from "./Error"
 
-function SignUp({ setUser }) {
+function SignUp({ setUser, setIsLoggedIn }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState([]);
@@ -29,8 +29,9 @@ function SignUp({ setUser }) {
       } else {
         r.json().then((err) => setErrors(err.errors));
       } 
-    //   history.push("/");
+      history.push("/");
     });
+    setIsLoggedIn(true);
   }
 
   return (

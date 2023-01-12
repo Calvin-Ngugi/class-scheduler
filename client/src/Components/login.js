@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Error from "./Error"
 
-function Login({ setUser }) {
+function Login({ setUser, setIsLoggedIn }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState([]);
@@ -19,21 +19,22 @@ function Login({ setUser }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
-        // history.push("/")
       }
       else{
         r.json().then((err) => setErrors(err.errors));
       }
+      history.push("/")
     });
+    setIsLoggedIn(true);
   }
 
   return (
      <div className="container mt-5">
         <div className="row d-flex justify-content-center">
           <div className="col-md-4">
-            <form onSubmit={handleSubmit} className="needs-validation">
+            <form onSubmit={handleSubmit}>
               <h3 className="sign">Login</h3>
-              <div className="mb-3 mt-3 was-validated">
+              <div className="mb-3 mt-3">
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
@@ -46,7 +47,7 @@ function Login({ setUser }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="mb-3 was-validated">
+              <div className="mb-3">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
