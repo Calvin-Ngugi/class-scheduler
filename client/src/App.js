@@ -8,7 +8,6 @@ import Home from "./Components/Home";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     // auto-login
@@ -26,8 +25,7 @@ const App = () => {
           <Route exact path="/">
             <Home 
             setUser={setUser}
-            setIsLoggedIn={setIsLoggedIn}
-            isLoggedIn={isLoggedIn}
+            user={user}
             />
           </Route>
         </Switch>
@@ -36,14 +34,15 @@ const App = () => {
           <Route path="/signup">
             <SignUp 
             setUser={setUser}
-            setIsLoggedIn={setIsLoggedIn}
             />
           </Route>
           <Route path="/login">
             <Login 
-            setIsLoggedIn={setIsLoggedIn}
             setUser={setUser} 
             />
+          </Route>
+          <Route path="/">
+            <Home/>
           </Route>
         </Switch>
       )

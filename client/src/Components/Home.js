@@ -1,9 +1,9 @@
 import React from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
-const Home = ({setUser, setIsLoggedIn, isLoggedIn}) => {
+const Home = ({user, setUser}) => {
   const history = useHistory();
-  if (!isLoggedIn) return <Redirect to="/login" />;
 
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -11,9 +11,9 @@ const Home = ({setUser, setIsLoggedIn, isLoggedIn}) => {
         setUser(null);
       }
     });
-    setIsLoggedIn(false);
     history.push("/login");
   }
+  if(user){
   return (
     <div>
       <button
@@ -25,6 +25,16 @@ const Home = ({setUser, setIsLoggedIn, isLoggedIn}) => {
       </button>
     </div>
   );
-};
+  } else {
+    return (
+      <>
+      <h1>Please Login or SignUp to continue...</h1>
+      <Link to={`/login`} className="link" >
+        Login
+      </Link>
+      </>
+    );
+  }
+}
 
 export default Home;
