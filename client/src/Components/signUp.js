@@ -26,12 +26,12 @@ function SignUp({ setUser, setIsLoggedIn }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+        history.push("/");
+        setIsLoggedIn(true);
       } else {
         r.json().then((err) => setErrors(err.errors));
       } 
-      history.push("/");
     });
-    setIsLoggedIn(true);
   }
 
   return (
