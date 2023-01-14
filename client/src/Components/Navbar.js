@@ -14,7 +14,7 @@ const Navbar = ({ user, setUser }) => {
     return (
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <Link class="navbar-brand" to={`/`}>
+          <Link className="navbar-brand" to={`/`}>
             Navbar
           </Link>
           <button
@@ -29,14 +29,14 @@ const Navbar = ({ user, setUser }) => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="nav navbar-nav mx-4 ml-2">
-              <li class="nav-item">
-                <Link class="nav-link active" aria-current="page" to={`/login`}>
+            <ul className="nav navbar-nav mx-4 ml-2">
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to={`/login`}>
                   Login
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to={`/signUp`}>
+              <li className="nav-item">
+                <Link className="nav-link" to={`/signUp`}>
                   Sign Up
                 </Link>
               </li>

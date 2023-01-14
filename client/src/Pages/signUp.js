@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Error from "./Error"
+import Error from "../Components/Error"
 
 function SignUp({ setUser }) {
   const history = useHistory();
