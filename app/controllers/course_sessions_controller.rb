@@ -1,6 +1,6 @@
 class CourseSessionsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
-    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    rescue_from ActiveRecord::RecordInvalid, with: :rescue_from_invalid_record
     before_action :require_admin, except: [:index, :show]
 
     def index
@@ -9,7 +9,7 @@ class CourseSessionsController < ApplicationController
     
     def show
         course_session = CourseSession.find_by(id: params[:id])
-        render json: course_session, status: :ok
+        render json: course_session, serializer: SingleCourseSessionSerializer
     end
 
     def create

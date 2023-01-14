@@ -23,12 +23,12 @@ puts "Start seeding...."
     course_session4 = CourseSession.create(course_id: 1, session_name: "Object Oriented Programming", date: "Date: 2023-01-18", time: "11.00am-1.00pm", invitation_link: "https://meet.google.com/bgx-ddmb-sfq", description: "Object-oriented programming, or OOP, is an approach to problem solving where all computations are carried out using objects. An object is a component of a program that knows how to perform certain actions and how to interact with other elements of the program. Objects are the basic units of object-oriented programming. A simple example of an object would be a person. Logically, you would expect a person to have a name. This would be considered a property of the person. You could also expect a person to be able to do something, such as walking or driving. This would be considered a method of the person.")
     course_session5 = CourseSession.create(course_id: 3, session_name: "Introduction to Data Science", date: "Date: 2023-01-16", time: "2.00am-4.00pm", invitation_link: "https://meet.google.com/bgx-ddmb-sfq", description: "Data Science is the area of study which involves extracting insights from vast amounts of data using various scientific methods, algorithms, and processes. It helps you to discover hidden patterns from the raw data. The term Data Science has emerged because of the evolution of mathematical statistics, data analysis, and big data. Data Science is an interdisciplinary field that allows you to extract knowledge from structured or unstructured data. Data science enables you to translate a business problem into a research project and then translate it back into a practical solution.")
 
-    comment1 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 1)
-    comment2 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 2)
-    comment3 = Comment.create(content: "Glad you enjoyed the session.", user_id: 1, course_session_id: 1)
-    comment4 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 3)
-    comment5 = Comment.create(content: "You can go back and do more research on this topic.", user_id: 1, course_session_id: 4)
-    comment6 = Comment.create(content: "This one was a bit mbadala.", user_id: 2, course_session_id: 4)
-    comment7 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 5)
+    comment1 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 1, likes: 3)
+    comment2 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 2, likes: 1)
+    comment3 = Comment.create(content: "Glad you enjoyed the session.", user_id: 1, course_session_id: 1, likes: 2)
+    comment4 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 3, likes: 1)
+    comment5 = Comment.create(content: "You can go back and do more research on this topic.", user_id: 1, course_session_id: 4, likes: 2)
+    comment6 = Comment.create(content: "This one was a bit mbadala.", user_id: 2, course_session_id: 4, likes: 5)
+    comment7 = Comment.create(content: "This was a very interesting session.", user_id: 2, course_session_id: 5, likes: 2)
 
 puts "Done seeding."
