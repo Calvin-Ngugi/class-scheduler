@@ -16,7 +16,7 @@ const Home = ({user, setUser}) => {
   if(user){
     if (user.role === "instructor"){
   return (
-    <div>
+    <div className="container">
       <h4>Show me what you got</h4>
       <button
         onClick={handleLogout}
@@ -29,7 +29,7 @@ const Home = ({user, setUser}) => {
   );
     } else {
       return (
-      <div>
+      <div className="container">
       <button
         onClick={handleLogout}
         className="btn btn-outline-danger"
@@ -42,12 +42,12 @@ const Home = ({user, setUser}) => {
     }
   } else {
     return (
-      <>
+      <div className="container">
       <h1>Please Login or SignUp to continue...</h1>
       <Link to={`/login`} className="link" >
         Login
       </Link>
-      </>
+      </div>
     );
   }
 }

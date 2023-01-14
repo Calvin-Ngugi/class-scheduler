@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.js";
 import SignUp from "./Components/signUp";
 import Login from "./Components/login";
 import Home from "./Components/Home";
+import Navbar from "./Components/Navbar";
 
 
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
 
   return (
     <main>
+      <Navbar setUser={setUser} user={user}/>
       {user ?(
         <Switch>
           <Route exact path="/">
