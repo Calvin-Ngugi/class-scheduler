@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Error from "./Error"
 
 function Login({ setUser }) {
@@ -70,6 +70,7 @@ function Login({ setUser }) {
                   <Error key={err}>{err}</Error>
                 ))}
               </div>
+              <p className="mt-3">If you don't have an account, <Link to={`/signup`} className="link" >Sign Up Here</Link></p>
             </form>
           </div>
         </div>

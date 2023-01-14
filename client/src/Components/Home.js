@@ -14,8 +14,10 @@ const Home = ({user, setUser}) => {
     history.push("/login");
   }
   if(user){
+    if (user.role === "instructor"){
   return (
     <div>
+      <h4>Show me what you got</h4>
       <button
         onClick={handleLogout}
         className="btn btn-outline-danger"
@@ -25,6 +27,19 @@ const Home = ({user, setUser}) => {
       </button>
     </div>
   );
+    } else {
+      return (
+      <div>
+      <button
+        onClick={handleLogout}
+        className="btn btn-outline-danger"
+        style={{ width: "100px" }}
+      >
+        Logout
+      </button>
+    </div>
+    );
+    }
   } else {
     return (
       <>
