@@ -15,7 +15,7 @@ const Navbar = ({ user, setUser }) => {
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to={`/`}>
-            Navbar
+            V-Tech
           </Link>
           <button
             className="navbar-toggler"

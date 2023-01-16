@@ -22,7 +22,11 @@ const Home = ({ user, setUser }) => {
         courses={courses}/>
       );
     } else {
-      return <StudentDashboard />;
+      return (
+      <StudentDashboard 
+        user={user}
+        courses={courses}/>
+      );
     }
   } else {
     return (

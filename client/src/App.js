@@ -7,6 +7,7 @@ import Login from "./Pages/login";
 import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import SingleCourse from "./Components/Course/SingleCourse";
+import Session from "./Components/Session/Session";
 
 
 const App = () => {
@@ -34,6 +35,9 @@ const App = () => {
           </Route>
           <Route path="/courses/:id">
             <SingleCourse user={user}/>
+          </Route>
+          <Route path="/course_sessions/:id">
+            <Session />
           </Route>
         </Switch>
       ) : (

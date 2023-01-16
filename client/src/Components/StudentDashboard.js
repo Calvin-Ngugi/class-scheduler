@@ -1,7 +1,9 @@
 import React from 'react'
+import Courses from "./Courses/Courses";
 
-const StudentDashboard = ({user, setUser}) => {
+const StudentDashboard = ({user, courses}) => {
   return (
+    <>
     <div
       id="carouselExampleCaptions"
       className="carousel slide container mt-1"
@@ -33,21 +35,21 @@ const StudentDashboard = ({user, setUser}) => {
         <div className="carousel-item active" data-bs-interval="7000">
           <img src="./images/team_work.jpg" className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
+            <h4>Welcome {user.username}</h4>
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
         <div className="carousel-item" data-bs-interval="7000">
           <img src="./images/graduates.jpg" className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
+            <h4>Second slide label</h4>
             <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
         <div className="carousel-item"data-bs-interval="7000">
           <img src="./images/moringa-students.jpg" className="d-block w-100" alt="..."/>
           <div className="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
+            <h4>Third slide label</h4>
             <p>Some representative placeholder content for the third slide.</p>
           </div>
         </div>
@@ -71,6 +73,8 @@ const StudentDashboard = ({user, setUser}) => {
         <span className="visually-hidden">Next</span>
       </button>
     </div>
+    <Courses courses={courses}/>
+    </>
   )
 }
 

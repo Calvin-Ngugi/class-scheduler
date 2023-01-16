@@ -4,6 +4,6 @@ class CourseSession < ApplicationRecord
     validates :description, presence: true, length: {minimum: 10}
 
     def brief_desc
-        description.split[0..9].join(" ")
+        description.split[0..15].join(" ")
     end
 end

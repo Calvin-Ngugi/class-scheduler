@@ -36,3 +36,7 @@ code {
   height: 90px;
   overflow: hidden;  
 }
+
+.cut{
+  max-width: 800px;
+}
