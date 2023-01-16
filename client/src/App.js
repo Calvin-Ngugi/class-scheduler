@@ -8,6 +8,7 @@ import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import SingleCourse from "./Components/Course/SingleCourse";
 import Session from "./Components/Session/Session";
+import AllSessions from "./Components/AllSessions";
 
 
 const App = () => {
@@ -35,6 +36,9 @@ const App = () => {
           </Route>
           <Route path="/courses/:id">
             <SingleCourse user={user}/>
+          </Route>
+          <Route exact path="/course_sessions">
+            <AllSessions/>
           </Route>
           <Route path="/course_sessions/:id">
             <Session />
