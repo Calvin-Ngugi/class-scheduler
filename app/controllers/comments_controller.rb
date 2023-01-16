@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
     before_action :set_comment, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
+
+    def index
+      render json: Comment.all, status: :ok
+    end
   
     def create
       @comment = current_user.comments.build(comment_params)

@@ -54,4 +54,4 @@ function CourseForm({ onAddCourse }) {
   );
 }
 
-export default HubForm;
+export default CourseForm;
