@@ -1,22 +1,25 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const ProfileForm = () => {
+const EditProfileRecord = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { a } = location.state;
   const [formdata, setFormData] = useState({
-    First_name: "",
-    Last_name: "",
-    gender: "",
-    bio: "",
-    profile_img: "",
+    First_name: a.First_name,
+    Last_name: a.Last_name,
+    gender: a.gender,
+    bio: a.bio,
+    profile_img: a.profile_img,
   });
   function handleChange(e) {
     setFormData({ ...formdata, [e.target.name]: e.target.value });
   }
   function handleSubmit(e) {
     e.preventDefault();
-    e.target.reset();
     // console.log(JSON.stringify(formdata))
-    fetch("/profiles", {
-      method: "POST",
+    fetch(`/profiles/${a.id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Application: "application/json",
@@ -24,13 +27,13 @@ const ProfileForm = () => {
       body: JSON.stringify(formdata),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => navigate("/"))
       .catch(console.error);
   }
   return (
-    <div className="studentbackground">
+    <div className="studentbackground2">
       <div className="form">
-        <h2>Create Profile</h2>
+        <h2>Edit Profile Details</h2>
         <div className="container">
           <form id="profile-form" onSubmit={handleSubmit}>
             <label for="fname">First name</label>
@@ -77,9 +80,8 @@ const ProfileForm = () => {
               value={formdata.profile_img}
               onChange={handleChange}
             />
-
             <button id="btn" type="submit">
-              Create Profile
+              Edit Profile
             </button>
           </form>
         </div>
@@ -87,4 +89,4 @@ const ProfileForm = () => {
     </div>
   );
 };
-export default ProfileForm;
+export default EditProfileRecord;
