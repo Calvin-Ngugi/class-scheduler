@@ -30,3 +30,9 @@ code {
   min-height: 300px;
   max-height: 630px;
 }
+
+.box p{
+  line-height: 28px;
+  height: 90px;
+  overflow: hidden;  
+}

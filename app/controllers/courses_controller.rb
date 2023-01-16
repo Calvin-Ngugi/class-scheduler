@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
 
      def show
         course = find_course
-        render json: course, status: :ok
+        render json: course, serializer: SingleCourseSerializer
      end
 
      def create
