@@ -95,7 +95,7 @@ function SignUp({ setUser }) {
               </div>
               <div>
                 <button type="submit" className="btn btn-success justify-conter-center">
-                  Submit
+                  Sign Up
                 </button>
               </div>
               <div>
