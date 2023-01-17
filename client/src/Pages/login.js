@@ -62,7 +62,7 @@ function Login({ setUser }) {
               </div>
               <div>
                 <button type="submit" className="btn btn-success justify-conter-center">
-                  Submit
+                  Login
                 </button>
               </div>
               <div>

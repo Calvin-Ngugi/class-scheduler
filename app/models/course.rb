@@ -1,5 +1,4 @@
 class Course < ApplicationRecord
-    has_many :sessions
-    has_many :announcements
-    has_many :comments, through: :sessions
+    has_many :course_sessions
+    has_many :comments, through: :course_sessions
 end

@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import InstructorDashboard from "../Components/InstructorDashboard";
 import StudentDashboard from "../Components/StudentDashboard";
 
 const Home = ({ user, setUser }) => {
+  const [courses, setCourses] = useState([])
+
+  useEffect(() => {
+    fetch(`/courses`)
+      .then((res) => res.json())
+      .then((course) => {
+        setCourses(course);
+      });
+  }, []);
+
   if (user) {
     if (user.role === "instructor") {
-      return <InstructorDashboard />;
+      return (
+      <InstructorDashboard
+        user={user}
+        courses={courses}/>
+      );
     } else {
       return <StudentDashboard />;
     }
