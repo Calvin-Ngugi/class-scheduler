@@ -14,8 +14,8 @@ const StudentNav = ({ setUser }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to={`/`}>
-          Navbar
+        <Link className="navbar-brand me-5" to={`/`}>
+          V-Tech
         </Link>
         <button
           className="navbar-toggler"
@@ -30,7 +30,7 @@ const StudentNav = ({ setUser }) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item ms-5">
+            <li className="nav-item ms-3">
               <Link
                 className="nav-link active"
                 aria-current="page"
@@ -39,12 +39,12 @@ const StudentNav = ({ setUser }) => {
                 My Courses
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item ms-3">
               <Link className="nav-link" to={`/Announcements`}>
                 Announcements
               </Link>
             </li>
-            <li className="nav-item dropdown justify-content-end">
+            <li className="nav-item dropdown justify-content-end ms-3">
               <a
                 className="nav-link dropdown-toggle"
                 href="#"

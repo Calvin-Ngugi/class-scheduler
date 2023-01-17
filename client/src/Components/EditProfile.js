@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 const EditProfileRecord = () => {
-  const navigate = useNavigate();
+  const navigate = useHistory();
   const location = useLocation();
   const { a } = location.state;
   const [formdata, setFormData] = useState({

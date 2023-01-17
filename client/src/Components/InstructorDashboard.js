@@ -42,7 +42,7 @@ const InstructorDashboard = ({ user, courses }) => {
         <div className="carousel-item" data-bs-interval="7000">
           <img src="./images/female_instructor.jpg" className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
-            <h4>Instructors privelage</h4>
+            <h4>Second slide</h4>
             <p>As an instructor we have given you the special rights to be able to properly handle the students</p>
           </div>
         </div>

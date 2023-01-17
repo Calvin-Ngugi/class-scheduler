@@ -14,8 +14,8 @@ const StudentNav = ({ setUser }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to={`/`}>
-          Navbar
+        <Link className="navbar-brand me-5" to={`/`}>
+          V-Tech
         </Link>
         <button
           className="navbar-toggler"
@@ -30,7 +30,7 @@ const StudentNav = ({ setUser }) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown ms-5">
+            <li className="nav-item dropdown ms-3">
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
@@ -42,7 +42,7 @@ const StudentNav = ({ setUser }) => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to={`/Courses`}>
+                  <Link className="dropdown-item" to={`/courses`}>
                     All courses
                   </Link>
                 </li>
@@ -50,9 +50,9 @@ const StudentNav = ({ setUser }) => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={`/add_course`}>
                     Add Courses
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -68,7 +68,7 @@ const StudentNav = ({ setUser }) => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to={`/Announcements`}>
+                  <Link className="dropdown-item" to={`/announcements`}>
                     All Announcements
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ const StudentNav = ({ setUser }) => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to={`/AllSessions`}>
+                  <Link className="dropdown-item" to={`/course_sessions`}>
                     All Sessions
                   </Link>
                 </li>
