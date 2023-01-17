@@ -42,14 +42,14 @@ const StudentDashboard = ({user, courses}) => {
         <div className="carousel-item" data-bs-interval="7000">
           <img src="./images/graduates.jpg" className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
-            <h4>Second slide label</h4>
+            <h4>Academic excellence</h4>
             <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
         <div className="carousel-item"data-bs-interval="7000">
           <img src="./images/moringa-students.jpg" className="d-block w-100" alt="..."/>
           <div className="carousel-caption d-none d-md-block">
-            <h4>Third slide label</h4>
+            <h4>Team work</h4>
             <p>Some representative placeholder content for the third slide.</p>
           </div>
         </div>

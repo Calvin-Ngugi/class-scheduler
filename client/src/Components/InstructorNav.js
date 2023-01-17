@@ -42,7 +42,7 @@ const StudentNav = ({ setUser }) => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to={`/Courses`}>
+                  <Link className="dropdown-item" to={`/courses`}>
                     All courses
                   </Link>
                 </li>
@@ -68,7 +68,7 @@ const StudentNav = ({ setUser }) => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to={`/Announcements`}>
+                  <Link className="dropdown-item" to={`/announcements`}>
                     All Announcements
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ const StudentNav = ({ setUser }) => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to={`/AllSessions`}>
+                  <Link className="dropdown-item" to={`/course_sessions`}>
                     All Sessions
                   </Link>
                 </li>
