@@ -50,9 +50,9 @@ const StudentNav = ({ setUser }) => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={`/add_course`}>
                     Add Courses
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

@@ -8,6 +8,7 @@ import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import SingleCourse from "./Components/Course/SingleCourse";
 import Session from "./Components/Session/Session";
+import CourseForm from "./Components/CourseForm";
 import AllSessions from "./Pages/AllSessions";
 
 
@@ -42,6 +43,9 @@ const App = () => {
           </Route>
           <Route path="/course_sessions/:id">
             <Session />
+          </Route>
+          <Route path="/add_course">
+            <CourseForm />
           </Route>
         </Switch>
       ) : (
