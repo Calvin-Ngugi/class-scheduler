@@ -1,51 +1,47 @@
 class CommentsController < ApplicationController
-    before_action :set_comment, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!
-
-    def index
-      render json: Comment.all, status: :ok
-    end
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
+  rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
   
-    def create
-      @comment = current_user.comments.build(comment_params)
-      if @comment.save
-        redirect_to @comment, notice: 'Comment was successfully created.'
-      else
-        render :new
+      def index
+          render json: Comment.all, status: :ok
       end
-    end
   
-    def update
-      if @comment.update(comment_params)
-        redirect_to @comment, notice: 'Comment was successfully updated.'
-      else
-        render :edit
+      def create
+        review = course_session.comments.create!(review_params)
+        render json: review, status: :created
       end
-    end
   
-    def destroy
-      if current_user == @comment.user
-        @comment.destroy
-        redirect_to comments_url, notice: 'Comment was successfully destroyed.'
-      else
-        redirect_to comments_url, notice: 'You are not authorized to delete this comment.'
+      def update
+          review = Comment.find_by(id: params[:id])
+          review.update!(review_params)
+          render json: review
       end
-    end
   
-    def like
-      @comment = Comment.find(params[:id])
-      @comment.liked_by current_user
-      redirect_to @comment
-    end
+      def destroy 
+          review = Comment.find(params[:id])
+          review.destroy
+          head :no_content
+      end
   
-    private
+      def show
+          review = Comment.find_by(id: params[:id])
+          render json: review, status: :ok 
+      end
   
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+      private
+      def review_params
+          params.permit(:content, :like, :course_session_id, :user_id)
+      end
   
-    def comment_params
-      params.require(:comment).permit(:body)
-    end
+      def rescue_from_not_found_record
+          render json: {error: "Comment not found"}, status: :not_found 
+      end
+  
+      def rescue_from_invalid_record(e)
+          render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity 
+      end
+  
+      def course_session
+          @course_session ||= CourseSession.find_by(id: params[:course_sesion_id])
+      end
   end
-  
