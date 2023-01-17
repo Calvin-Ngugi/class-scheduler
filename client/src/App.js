@@ -8,7 +8,7 @@ import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import SingleCourse from "./Components/Course/SingleCourse";
 import Session from "./Components/Session/Session";
-import AllSessions from "./Components/AllSessions";
+import AllSessions from "./Pages/AllSessions";
 
 
 const App = () => {
