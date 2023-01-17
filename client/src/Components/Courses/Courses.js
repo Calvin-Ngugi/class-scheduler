@@ -1,11 +1,13 @@
 import React from 'react'
 import CourseCard from './CourseCard'
 
-const Courses = ({courses}) => {
+const Courses = ({courses, user, setCourses}) => {
     const displayCards = courses.map((courses) => (
         <CourseCard
           key={courses.id}
           courses={courses}
+          user={user}
+          setCourses={setCourses}
         />
       ));
   return (

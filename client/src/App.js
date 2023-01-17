@@ -10,10 +10,12 @@ import SingleCourse from "./Components/Course/SingleCourse";
 import Session from "./Components/Session/Session";
 import CourseForm from "./Components/CourseForm";
 import AllSessions from "./Pages/AllSessions";
+import Courses from "./Components/Courses/Courses";
 
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [courses, setCourses] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -22,6 +24,14 @@ const App = () => {
         r.json().then((user) => setUser(user));
       }
     });
+  }, []);
+
+  useEffect(() => {
+    fetch(`/courses`)
+      .then((res) => res.json())
+      .then((course) => {
+        setCourses(course);
+      });
   }, []);
 
   return (
@@ -33,6 +43,8 @@ const App = () => {
             <Home 
             setUser={setUser}
             user={user}
+            courses={courses}
+            setCourses={setCourses}
             />
           </Route>
           <Route path="/courses/:id">
@@ -46,6 +58,13 @@ const App = () => {
           </Route>
           <Route path="/add_course">
             <CourseForm />
+          </Route>
+          <Route path="/courses">
+            <Courses 
+            courses={courses}
+            setCourses={setCourses}
+            user={user}
+            />
           </Route>
         </Switch>
       ) : (
