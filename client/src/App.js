@@ -7,6 +7,7 @@ import Login from "./Pages/login";
 import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import SingleCourse from "./Components/Course/SingleCourse";
+import AllSessions from "./Pages/AllSessions";
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
 
   return (
     <main>
+     <AllSessions/> 
       <Navbar setUser={setUser} user={user}/>
       {user ?(
         <Switch>
