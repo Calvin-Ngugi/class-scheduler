@@ -1,11 +1,9 @@
 class User < ApplicationRecord
     has_secure_password
     validates :username, presence: true, uniqueness: {case_sensitive: true}
-    validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-    has_many :announcements, through: :course
-    has_many :sessions, through: :course
-    has_many :courses
+    validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
     has_one :profile
+    has_many :comments
 
     def instructor?
         self.role == "instructor"
