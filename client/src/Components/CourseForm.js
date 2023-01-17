@@ -39,12 +39,16 @@ function CourseForm({ onAddCourse }) {
         <input
           type="text"
           id="course_name"
+          name="course_name"
+          required
           value={formData.course_name}
           onChange={handleChange}
         />
         <label htmlFor="description">Course Description: </label>
         <textarea
           id="description"
+          name="description"
+          required
           value={formData.description}
           onChange={handleChange}
         />
