@@ -34,7 +34,7 @@ a{
 }
 
 .course-content{
-    background-image: url("../Assets/background.png");
+    background-image: url("../Assets/courses.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     /*min-height: 100vh;*/
