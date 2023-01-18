@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card, ListGroup, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Sessions from '../Components/Course/Sessions';
 
 function AllSessions() {
   const [sessions, setSessions] = useState([]);
@@ -20,27 +20,20 @@ function AllSessions() {
       });
   }, []);
 
+  const displayCards = sessions.map((sessions) =>(
+    <Sessions 
+      key={sessions.id}
+      sessions={sessions}
+    />
+  ));
+
   return (
     <div className="col">
       {isLoading ? (
-        <p>Loading...</p>
+        <div className='container text-color-success'>Loading...</div>
       ) : (
-        <div>
-          {sessions.map(session => (
-            <Card key={session.id} style={{ width: '79rem' }}>
-              <Card.Body>
-                <Card.Title>{session.session_name}</Card.Title>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>Session Date: {session.date}</ListGroup.Item>
-                  <ListGroup.Item>Session Description: {session.brief_desc}</ListGroup.Item>
-
-                </ListGroup>
-                <Link to={`/session/${session.id}`}>
-                  <Button variant="primary">More</Button>
-                </Link>
-              </Card.Body>
-            </Card>
-          ))}
+        <div className='container mt-5'>
+          {displayCards}
         </div>
       )}
     </div>

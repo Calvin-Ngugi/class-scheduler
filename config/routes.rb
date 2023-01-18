@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :announcements
   resources :course_sessions
   resources :courses
+  resources :comments
 
   post '/signup', to: 'users#create'
   get '/me', to: "users#show"

@@ -13,7 +13,7 @@ class CourseSessionsController < ApplicationController
     end
 
     def create
-        course_session = CourseSession.create(session_params)
+        course_session = CourseSession.create!(session_params)
         render json: course_session, status: :created
     end
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Courses from "./Courses/Courses";
 
-const StudentDashboard = ({user, courses}) => {
+const StudentDashboard = ({user, courses, setCourses}) => {
   return (
     <>
     <div
@@ -73,7 +73,11 @@ const StudentDashboard = ({user, courses}) => {
         <span className="visually-hidden">Next</span>
       </button>
     </div>
-    <Courses courses={courses}/>
+    <Courses 
+      courses={courses}
+      user={user}
+      setCourses={setCourses}  
+    />
     </>
   )
 }
