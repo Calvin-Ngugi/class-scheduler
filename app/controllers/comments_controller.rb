@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
   rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+  before_action :check_user, only: [:destroy]
   
       def index
           render json: Comment.all, status: :ok
@@ -44,4 +45,11 @@ class CommentsController < ApplicationController
       def course_session
           @course_session ||= CourseSession.find(params[:course_session_id])
       end
+
+      def check_user
+        unless Comment.find(params[:user_id]).belongs_to_user?(current_user)
+            render json: {error: "You are not authorized to perform this action."}, status: :not_authorized
+        end
+    end
+    
   end
