@@ -40,3 +40,7 @@ code {
 .cut{
   max-width: 800px;
 }
+
+.resize{
+  width: 700px;
+}

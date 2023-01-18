@@ -54,7 +54,7 @@ const App = () => {
             <AllSessions/>
           </Route>
           <Route path="/course_sessions/:id">
-            <Session />
+            <Session user={user}/>
           </Route>
           <Route path="/add_course">
             <CourseForm />

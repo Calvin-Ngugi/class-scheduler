@@ -42,6 +42,6 @@ class CommentsController < ApplicationController
       end
   
       def course_session
-          @course_session ||= CourseSession.find_by(id: params[:course_sesion_id])
+          @course_session ||= CourseSession.find(params[:course_session_id])
       end
   end
