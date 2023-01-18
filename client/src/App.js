@@ -11,6 +11,7 @@ import Session from "./Components/Session/Session";
 import AllSessions from "./Components/AllSessions";
 
 
+
 const App = () => {
   const [user, setUser] = useState(null);
 
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <main>
+    
       <Navbar setUser={setUser} user={user}/>
       {user ?(
         <Switch>
