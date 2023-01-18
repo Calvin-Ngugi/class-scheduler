@@ -29,6 +29,11 @@ class CourseSessionsController < ApplicationController
         head :no_content
     end
 
+    def search
+        @course_session = CourseSession.where("session_name like ?", "%#{params[:query]}%")
+        render json: @courses
+      end
+
     private
     def rescue_from_not_found_record
         render json: {error: "Review not found"}, status: :not_found 
