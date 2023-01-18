@@ -13,6 +13,7 @@ import AllSessions from "./Pages/AllSessions";
 import Courses from "./Components/Courses/Courses";
 
 
+
 const App = () => {
   const [user, setUser] = useState(null);
   const [courses, setCourses] = useState([])
@@ -36,6 +37,7 @@ const App = () => {
 
   return (
     <main>
+    
       <Navbar setUser={setUser} user={user}/>
       {user ?(
         <Switch>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+ 
   resources :announcements
   resources :course_sessions
   resources :courses
@@ -12,4 +13,6 @@ Rails.application.routes.draw do
   get '/me', to: "users#show"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+  get '/search_courses', to: 'courses#search'
+  get '/search_coursesessions', to: 'course_sessions#search'
 end
