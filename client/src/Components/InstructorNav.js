@@ -126,9 +126,9 @@ const StudentNav = ({ setUser }) => {
                   </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={`/add_profile`}>
                     Add Profile details
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />

@@ -1,59 +1,65 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "../Css/CourseForm.css";
 
-const initialState = {
-  course_name: "",
-  description: ""
-};
-
-function CourseForm({ onAddCourse }) {
-  const [formData, setFormData] = useState(initialState);
-
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
-  }
+function CourseForm() {
+  const [course_name, setCourseName] = useState("");
+  const [description, setDescription] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+    e.target.reset();
     fetch("/courses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Application: "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        course_name,
+        description,
+      }),
     })
-      .then((r) => r.json())
-      .then((newCourse) => {
-        setFormData(initialState);
-        onAddCourse(newCourse);
-      });
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch(console.error);
   }
 
   return (
-    <div className="card">
-      <h2>Course Detail</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="course_name">Course Name: </label>
-        <input
-          type="text"
-          id="course_name"
-          name="course_name"
-          required
-          value={formData.course_name}
-          onChange={handleChange}
-        />
-        <label htmlFor="description">Course Description: </label>
-        <textarea
-          id="description"
-          name="description"
-          required
-          value={formData.description}
-          onChange={handleChange}
-        />
-        <button type="submit">Register Course</button>
-      </form>
+    <div className="course-content">
+      <div className="course">
+        <h1>Create Course </h1>
+        <form className="course-form" onSubmit={handleSubmit}>
+          <div className="top-row">
+            <div className="field-wrap">
+              <label className="label">
+                Course Name<span className="req">*</span>
+              </label>
+              <input
+                type="text"
+                id="course_name"
+                value={course_name}
+                onChange={(e) => setCourseName(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="field-wrap">
+            <label className="label">
+             Description<span className="req">*</span>
+            </label>
+            <input
+              type="text"
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="course-btn">
+            <button id="btn" type="submit">
+              Register Course
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

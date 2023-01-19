@@ -28,7 +28,7 @@ class AnnouncementsController < ApplicationController
         @announcement.destroy
         head :no_content
     end
-    
+
     private
 
     def announcement_params
@@ -40,11 +40,11 @@ class AnnouncementsController < ApplicationController
     end
 
     def rescue_from_not_found_record
-        render json: {error: "Review not found"}, status: :not_found 
+        render json: {error: "Review not found"}, status: :not_found
     end
 
     def rescue_from_invalid_record(e)
-        render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity 
+        render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity
     end
 
     def require_admin

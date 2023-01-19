@@ -27,7 +27,7 @@ const LikeButton = ({ commentId }) => {
   return (
     <div>
       <button onClick={handleClick}>
-        {isLiked ? <FaThumbsUp style={{color: 'blue'}} /> : <FaThumbsUp />}
+        {isLiked ? <FaThumbsUp style={{color: 'blue', border: 'no-border'}} /> : <FaThumbsUp />}
       </button>
       <p>{likes} likes</p>
     </div>

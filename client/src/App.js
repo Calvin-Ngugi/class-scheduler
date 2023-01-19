@@ -11,8 +11,7 @@ import Session from "./Components/Session/Session";
 import CourseForm from "./Components/CourseForm";
 import AllSessions from "./Pages/AllSessions";
 import Courses from "./Components/Courses/Courses";
-
-
+import ProfileForm from "./Components/ProfileForm";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -66,6 +65,9 @@ const App = () => {
             setCourses={setCourses}
             user={user}
             />
+          </Route>
+          <Route path="/add_profile">
+            <ProfileForm />
           </Route>
         </Switch>
       ) : (
