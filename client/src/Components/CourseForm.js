@@ -1,67 +1,59 @@
 import React, { useState } from "react";
 import "../Css/CourseForm.css";
-
-function CourseForm() {
-  const [course_name, setCourseName] = useState("");
-  const [description, setDescription] = useState("");
-
+const CourseForm = () => {
+  const [formdata, setFormData] = useState({
+    course_name: "",
+    description: "",
+  });
+  function handleChange(e) {
+    setFormData({ ...formdata, [e.target.name]: e.target.value });
+  }
   function handleSubmit(e) {
     e.preventDefault();
     e.target.reset();
+    // console.log(JSON.stringify(formdata))
     fetch("/courses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Application: "application/json",
       },
-      body: JSON.stringify({
-        course_name,
-        description,
-      }),
+      body: JSON.stringify(formdata),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch(console.error);
   }
-
   return (
-    <div className="course-content">
-      <div className="course">
-        <h1>Create Course </h1>
-        <form className="course-form" onSubmit={handleSubmit}>
-          <div className="top-row">
-            <div className="field-wrap">
-              <label className="label">
-                Course Name<span className="req">*</span>
-              </label>
-              <input
-                type="text"
-                id="course_name"
-                value={course_name}
-                onChange={(e) => setCourseName(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="field-wrap">
-            <label className="label">
-             Description<span className="req">*</span>
-            </label>
+    <div className="coursebackground">
+      <div className="form">
+        <h2>Create New Course</h2>
+        <div className="containerr">
+          <form id="course-form" onSubmit={handleSubmit}>
+            <label htmlFor="name">Course name</label>
+            <input
+              type="text"
+              id="name"
+              name="course_name"
+              value={formdata.course_name}
+              onChange={handleChange}
+            />
+
+            <label for="name">Description</label>
             <input
               type="text"
               id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              name="description"
+              value={formdata.description}
+              onChange={handleChange}
             />
-          </div>
-          <div className="course-btn">
             <button id="btn" type="submit">
               Register Course
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
-}
-
+};
 export default CourseForm;

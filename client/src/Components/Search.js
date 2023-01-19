@@ -35,7 +35,7 @@ function Search() {
       <Form inline="true" onSubmit={handleSubmit}>
         <div className='row container d-flex justify-content-start mb-3'>
         <FormControl type="text" placeholder="Search..." onChange={handleChange} value={query} className='me-5' style={{width: "320px"}}/>
-        <Button type="submit" className='ms-5' style={{width: "120px"}}>Search</Button>
+        <Button type="submit" style={{width: "120px"}}>Search</Button>
         </div>
       </Form>
       <div>
