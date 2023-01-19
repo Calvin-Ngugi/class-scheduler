@@ -12,11 +12,13 @@ import CourseForm from "./Components/CourseForm";
 import AllSessions from "./Pages/AllSessions";
 import Courses from "./Components/Courses/Courses";
 import ProfileForm from "./Components/ProfileForm";
+import Announcements from "./Components/Announcements";
 
 
 const App = () => {
   const [user, setUser] = useState(null);
   const [courses, setCourses] = useState([])
+  const [announcements, setAnnouncements] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -32,6 +34,14 @@ const App = () => {
       .then((res) => res.json())
       .then((course) => {
         setCourses(course);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`/announcements`)
+      .then((res) => res.json())
+      .then((ann) => {
+        setAnnouncements(ann);
       });
   }, []);
 
@@ -69,6 +79,13 @@ const App = () => {
           </Route>
           <Route path="/add_profile">
             <ProfileForm />
+          </Route>
+          <Route path="/announcements">
+            <Announcements 
+            user={user}
+            announcements={announcements}
+            setAnnouncements={setAnnouncements}
+            />
           </Route>
         </Switch>
       ) : (

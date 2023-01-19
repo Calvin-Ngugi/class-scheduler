@@ -40,7 +40,7 @@ const StudentNav = ({ setUser }) => {
               </Link>
             </li>
             <li className="nav-item ms-3">
-              <Link className="nav-link" to={`/Announcements`}>
+              <Link className="nav-link" to={`/announcements`}>
                 Announcements
               </Link>
             </li>

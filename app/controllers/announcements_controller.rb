@@ -2,7 +2,6 @@ class AnnouncementsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
     rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
     before_action :require_admin, except: [:index, :show]
-    before_action :find_announcement, only: [:show, :update, :destroy]
 
     def index
         render json: Announcement.all
@@ -52,4 +51,5 @@ class AnnouncementsController < ApplicationController
             render json: {error: "You are not authorized to perform this action."}, status: :unauthorized
         end
     end
+end
 end
