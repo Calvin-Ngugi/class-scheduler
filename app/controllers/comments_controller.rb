@@ -28,6 +28,16 @@ class CommentsController < ApplicationController
           review = Comment.find_by(id: params[:id])
           render json: review, status: :ok 
       end
+
+      def like
+          comm = Comment.find(params[:id])
+          render json: comm, status: :ok
+      end
+
+      def status
+        comment = Comment.find(params[:id])
+        render json: { likes: comment.likes, isLiked: comment.liked_by?(current_user)}
+      end
   
       private
       def review_params

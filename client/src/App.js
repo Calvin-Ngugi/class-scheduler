@@ -37,7 +37,6 @@ const App = () => {
 
   return (
     <main>
-    
       <Navbar setUser={setUser} user={user}/>
       {user ?(
         <Switch>

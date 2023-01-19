@@ -1,4 +1,5 @@
 import React from 'react'
+import Search from '../Search';
 import CourseCard from './CourseCard'
 
 const Courses = ({courses, user, setCourses}) => {
@@ -12,6 +13,7 @@ const Courses = ({courses, user, setCourses}) => {
       ));
   return (
     <div className='container mb-4'>
+      <Search/>
         <h3 className='mt-3'>List of Courses</h3>
         <hr />
         <p className='mx-3'>Check out our courses</p>

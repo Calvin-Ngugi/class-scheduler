@@ -11,6 +11,8 @@ const Session = ({user}) => {
     content: ""
   });
   const [loading, setLoading] = useState(false);
+  const [likesCount, setLikesCount] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
 
   const { id } = useParams();
 
@@ -50,14 +52,15 @@ const Session = ({user}) => {
       });
   };
 
+
   let userComments
 
   if(loading && session.comments){
     userComments = comments.map((comm) =>{
       return (
         <Comments
-        key={comm.id}
-        comments={comm}
+          key={comm.id}
+          comments={comm}
         />
       )
     })
