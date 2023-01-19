@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import "../Css/CourseForm.css";
+import "../Css/ProfileForm.css";
 
 const ProfileForm = () => {
   const [formdata, setFormData] = useState({
     First_name: "",
     Last_name: "",
     gender: "",
-    bio: "",
-    profile_img: "",
+    bio: ""
   });
   function handleChange(e) {
     setFormData({ ...formdata, [e.target.name]: e.target.value });
@@ -29,73 +28,48 @@ const ProfileForm = () => {
       .catch(console.error);
   }
   return (
-    <div className="profile-content">
-      <div className="profile">
-        <h1>Create Profile </h1>
-        <form className="profile-form" onSubmit={handleSubmit}>
-          <div className="top-row">
-            <div className="field-wrap">
-              <label className="label">
-                First Name<span className="req">*</span>
-              </label>
-              <input
-                type="text"
-                id="fname"
-                value={formdata.First_name}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div className="field-wrap">
-            <label className="label">
-              Last Name<span className="req">*</span>
-            </label>
+    <div className="profilebackground">
+      <div className="form">
+        <h2>Create User Profile</h2>
+        <div className="container">
+          <form id="profile-form" onSubmit={handleSubmit}>
+            <label for="fname">First Name</label>
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              value={formdata.First_name}
+              onChange={handleChange}
+            />
+            <label for="lname">Last Name</label>
             <input
               type="text"
               id="lname"
+              name="lname"
               value={formdata.Last_name}
               onChange={handleChange}
             />
-          </div>
-          <div className="field-wrap">
-            <label className="label">
-              Gender<span className="req">*</span>
-            </label>
+            <label for="gender">Gender</label>
             <input
               type="text"
               id="gender"
+              name="gender"
               value={formdata.gender}
               onChange={handleChange}
             />
-          </div>
-          <div className="field-wrap">
-            <label className="label">
-              Bio<span className="req">*</span>
-            </label>
+            <label for="bio">Biography</label>
             <input
               type="text"
               id="bio"
+              name="bio"
               value={formdata.bio}
               onChange={handleChange}
             />
-          </div>
-          <div className="field-wrap">
-            <label className="label">
-              Bio<span className="req">*</span>
-            </label>
-            <input
-              type="text"
-              id="image"
-              value={formdata.profile_img}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="profile-btn">
             <button id="btn" type="submit">
-              Create Profile
+              Create User Profile
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
