@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+<<<<<<<<< Temporary merge branch 1
+
+=========
   resources :announcements
   resources :course_sessions
   resources :courses
@@ -12,4 +15,5 @@ Rails.application.routes.draw do
   get '/me', to: "users#show"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+>>>>>>>>> Temporary merge branch 2
 end

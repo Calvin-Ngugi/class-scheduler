@@ -13,6 +13,7 @@ import AllSessions from "./Pages/AllSessions";
 import Courses from "./Components/Courses/Courses";
 
 
+
 const App = () => {
   const [user, setUser] = useState(null);
   const [courses, setCourses] = useState([])
@@ -36,6 +37,7 @@ const App = () => {
 
   return (
     <main>
+    
       <Navbar setUser={setUser} user={user}/>
       {user ?(
         <Switch>
@@ -54,7 +56,7 @@ const App = () => {
             <AllSessions/>
           </Route>
           <Route path="/course_sessions/:id">
-            <Session />
+            <Session user={user}/>
           </Route>
           <Route path="/add_course">
             <CourseForm />
