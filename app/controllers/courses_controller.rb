@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-        params.permit(:name,:description)
+        params.permit(:course_name,:description)
     end
 
      def require_admin

@@ -1,11 +1,11 @@
 class ProfilesController < ApplicationController
      before_action :authorize, except: [:index, :show]
-     
+
      def show
         profile = find_profile
-        render json: profile, status: :ok 
+        render json: profile, status: :ok
      end
-     
+
      def create
         profile = Profile.create(profile_params);
         if profile.valid?
