@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
     rescue_from ActiveRecord::RecordInvalid, with: :rescue_from_invalid_record
     before_action :require_admin, except: [:index, :search ,:show]
+    
      def index
          render json: Course.all, status: :ok
      end
@@ -47,7 +48,7 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-        params.permit(:name,:description)
+        params.permit(:course_name, :description)
     end
 
      def require_admin

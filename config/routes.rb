@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     put :like, on: :member
     get :status, on: :member
   end
+  resources :profiles
   
   post '/signup', to: 'users#create'
   get '/me', to: "users#show"

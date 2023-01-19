@@ -12,7 +12,7 @@ import CourseForm from "./Components/CourseForm";
 import AllSessions from "./Pages/AllSessions";
 import Courses from "./Components/Courses/Courses";
 import ProfileForm from "./Components/ProfileForm";
-import AddSession from "./Components/Course/AddSession";
+
 
 const App = () => {
   const [user, setUser] = useState(null);

@@ -36,7 +36,7 @@ const StudentDashboard = ({user, courses, setCourses}) => {
           <img src="./images/team_work.jpg" className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <h4>Welcome {user.username}</h4>
-            <p>Some representative placeholder content for the first slide.</p>
+            <p>This is the student dashboard.</p>
           </div>
         </div>
         <div className="carousel-item" data-bs-interval="7000">

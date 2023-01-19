@@ -1,18 +1,17 @@
 class ProfilesController < ApplicationController
-     before_action :authorize, except: [:index, :show]
      
+     def index
+        render json: Profile.all, status: :ok
+     end
+
      def show
         profile = find_profile
         render json: profile, status: :ok 
      end
      
      def create
-        profile = Profile.create(profile_params);
-        if profile.valid?
-            render json: profile, status: :created
-        else
-            render json: {errors: profile.errors.full_messages} , status: :unprocessable_entity
-        end
+        profile = user.profile.create!(profile_params);
+        render json: profile, status: :created
      end
 
      def update
@@ -21,19 +20,23 @@ class ProfilesController < ApplicationController
         render json: profile, status: :updated
      end
 
+     def destroy
+        profile = find_profile
+        profile.destroy
+        head :no_content
+     end
+
     private
-    def authorize
-        return render json: {errors: ["Profile not Found"]}, status: :unauthorized unless session.include? :user_id
-    end
 
     def find_profile
       Profile.find_by(id: params[:id])
     end
 
     def profile_params
-        params.permit(:First_name,:Last_name,:gender,:bio,:profile_img)
+        params.permit(:First_name, :Last_name, :gender, :bio, :profile_img, :user_id)
     end
-end
 
-
+    def user
+      @user ||= User.find(params[:user_id])
+    end
 end
