@@ -77,9 +77,9 @@ const StudentNav = ({ setUser }) => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={`/announcement_form`}>
                     Add an Announcement
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

@@ -13,6 +13,7 @@ import AllSessions from "./Pages/AllSessions";
 import Courses from "./Components/Courses/Courses";
 import ProfileForm from "./Components/ProfileForm";
 import Announcements from "./Components/Announcements";
+import AnnouncementForm from "./Components/AnnouncementsForm";
 
 
 const App = () => {
@@ -68,7 +69,10 @@ const App = () => {
             <Session user={user}/>
           </Route>
           <Route path="/add_course">
-            <CourseForm />
+            <CourseForm 
+              courses={courses}
+              setCourses={setCourses}
+            />
           </Route>
           <Route path="/courses">
             <Courses 
@@ -85,6 +89,12 @@ const App = () => {
             user={user}
             announcements={announcements}
             setAnnouncements={setAnnouncements}
+            />
+          </Route>
+          <Route path="/announcement_form">
+            <AnnouncementForm 
+              announcements={announcements}
+              setAnnouncements={setAnnouncements}
             />
           </Route>
         </Switch>

@@ -1,6 +1,6 @@
 class AnnouncementsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
-    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    rescue_from ActiveRecord::RecordInvalid, with: :rescue_from_invalid_record
     before_action :require_admin, except: [:index, :show]
 
     def index
@@ -13,15 +13,13 @@ class AnnouncementsController < ApplicationController
 
     def create
         announcement = Announcement.create!(announcement_params)
-        if announcement.save
-            redirect_to @announcement, notice: 'Announcement was successfully created.'
-        end
         render json: announcement, status: :created
     end
 
     def update
         @announcement.update!(announcement_params)
         render json: @announcement,  status: :updated
+    end
 
     def destroy
         @announcement.destroy
@@ -31,7 +29,7 @@ class AnnouncementsController < ApplicationController
     private
 
     def announcement_params
-        params.permit(:course_id, :title, :content)
+        params.permit(:title, :content)
     end
 
     def find_announcement
@@ -51,5 +49,4 @@ class AnnouncementsController < ApplicationController
             render json: {error: "You are not authorized to perform this action."}, status: :unauthorized
         end
     end
-end
 end

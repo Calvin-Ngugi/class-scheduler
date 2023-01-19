@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../Css/CourseForm.css";
-const CourseForm = () => {
+
+const CourseForm = ({courses, setCourses}) => {
   const [formdata, setFormData] = useState({
     course_name: "",
     description: "",
   });
+
   function handleChange(e) {
     setFormData({ ...formdata, [e.target.name]: e.target.value });
   }
@@ -21,8 +23,13 @@ const CourseForm = () => {
       body: JSON.stringify(formdata),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        const newData = [...courses, data]
+        setCourses(newData)
+        console.log(newData)
+      })
       .catch(console.error);
+      e.target.reset();
   }
   return (
     <div className="coursebackground">
@@ -39,7 +46,7 @@ const CourseForm = () => {
               onChange={handleChange}
             />
 
-            <label for="name">Description</label>
+            <label htmlFor="name">Description</label>
             <input
               type="text"
               id="description"

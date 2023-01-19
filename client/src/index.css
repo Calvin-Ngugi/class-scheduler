@@ -45,3 +45,9 @@ code {
 .resize{
   width: 700px;
 }
+
+.style{
+  border-radius: 20px;
+  width: 900px;
+  background-color: #69a5d0;
+}

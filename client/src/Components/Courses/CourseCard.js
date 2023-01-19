@@ -61,7 +61,7 @@ const CourseCard = ({ courses, user , setCourses}) => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">You have deleted this course.</div>
+            <div className="modal-body">You have deleted this course. Refresh page to see changes.</div>
             <div className="modal-footer">
               <button
                 type="button"
