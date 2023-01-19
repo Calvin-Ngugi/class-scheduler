@@ -45,7 +45,3 @@ code {
 .resize{
   width: 700px;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

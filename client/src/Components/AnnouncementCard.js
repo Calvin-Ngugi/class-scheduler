@@ -8,7 +8,7 @@ const AnnouncementCard = ({ announcements, user, setAnnouncements}) => {
     })
     .then((res) => res.json())
     .then(() => {   
-        const delCard = reviews.filter((ann) => ann.id !== announcements.id); 
+        const delCard = announcements.filter((ann) => ann.id !== announcements.id); 
         setAnnouncements(delCard);
       })
       .catch((error) => console.log('Error from deleteLogsByGlobalId() => ' + error));
@@ -47,7 +47,7 @@ const AnnouncementCard = ({ announcements, user, setAnnouncements}) => {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Deleted review
+                Deleted Announcement
               </h1>
               <button
                 type="button"

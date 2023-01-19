@@ -7,7 +7,7 @@ function SessionDetails({session}) {
         <p className='mt-3'>{session.description}</p>
         <p>Date: {session.date}</p>
         <p>Duration: {session.time}</p>
-        <p>Invite link: <a href='#'>{session.invitation_link}</a></p>
+        <p>Invite link: <a href={session.invitation_link}>{session.invitation_link}</a></p>
     </div>
   )
 }

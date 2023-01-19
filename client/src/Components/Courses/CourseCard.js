@@ -9,7 +9,7 @@ const CourseCard = ({ courses, user , setCourses}) => {
     })
     .then((res) => res.json())
     .then(() => {   
-        const delCard = reviews.filter((course) => course.id !== courses.id); 
+        const delCard = course.filter((course) => course.id !== courses.id); 
         setCourses(delCard);
       })
       .catch((error) => console.log('Error from deleteLogsByGlobalId() => ' + error));
@@ -52,7 +52,7 @@ const CourseCard = ({ courses, user , setCourses}) => {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Deleted review
+                Deleted course
               </h1>
               <button
                 type="button"
