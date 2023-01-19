@@ -11,8 +11,6 @@ const Session = ({user}) => {
     content: ""
   });
   const [loading, setLoading] = useState(false);
-  const [likesCount, setLikesCount] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
 
   const { id } = useParams();
 
