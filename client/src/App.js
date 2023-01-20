@@ -14,11 +14,13 @@ import Courses from "./Components/Courses/Courses";
 import ProfileForm from "./Components/ProfileForm";
 import Announcements from "./Components/Announcements";
 import AnnouncementForm from "./Components/AnnouncementsForm";
+import Profile from "./Components/Profile";
 
 
 const App = () => {
   const [user, setUser] = useState(null);
   const [courses, setCourses] = useState([])
+  const [profile, setProfile] = useState([])
   const [announcements, setAnnouncements] = useState([])
 
   useEffect(() => {
@@ -44,6 +46,14 @@ const App = () => {
       .then((ann) => {
         setAnnouncements(ann);
       });
+  }, []);
+
+  useEffect(() => {
+    fetch(`/profiles`)
+    .then((res) => res.json())
+    .then((prof) => {
+      setProfile(prof);
+    });
   }, []);
 
   return (
@@ -82,7 +92,16 @@ const App = () => {
             />
           </Route>
           <Route path="/add_profile">
-            <ProfileForm />
+            <ProfileForm 
+              user={user} 
+              profile={profile} 
+              setProfile={setProfile}/>
+          </Route>
+          <Route path="/profile">
+            <Profile
+              key={profile.id}
+              profile={profile}
+            />
           </Route>
           <Route path="/announcements">
             <Announcements 

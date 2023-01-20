@@ -122,7 +122,7 @@ const StudentNav = ({ setUser }) => {
               <ul className="dropdown-menu">
                 <li>
                   <Link className="dropdown-item" to={`/Profile`}>
-                    My Profile
+                    Profiles
                   </Link>
                 </li>
                 <li>

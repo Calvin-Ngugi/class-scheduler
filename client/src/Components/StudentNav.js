@@ -36,7 +36,7 @@ const StudentNav = ({ setUser }) => {
                 aria-current="page"
                 to={`/Courses`}
               >
-                My Courses
+                Courses
               </Link>
             </li>
             <li className="nav-item ms-3">
@@ -57,7 +57,7 @@ const StudentNav = ({ setUser }) => {
               <ul className="dropdown-menu">
                 <li>
                   <Link className="dropdown-item" to={`/Profile`}>
-                    My profile
+                    Profiles
                   </Link>
                 </li>
                 <li>

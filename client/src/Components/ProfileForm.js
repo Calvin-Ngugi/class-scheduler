@@ -1,31 +1,35 @@
 import React, { useState } from "react";
 import "../Css/ProfileForm.css";
 
-const ProfileForm = () => {
+const ProfileForm = ({user, profile, setProfile}) => {
   const [formdata, setFormData] = useState({
     First_name: "",
     Last_name: "",
     gender: "",
     bio: ""
   });
+
   function handleChange(e) {
     setFormData({ ...formdata, [e.target.name]: e.target.value });
   }
   function handleSubmit(e) {
     e.preventDefault();
-    e.target.reset();
-    // console.log(JSON.stringify(formdata))
+    const user_id = user.id;
+
     fetch("/profiles", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Application: "application/json",
       },
-      body: JSON.stringify(formdata),
+      body: JSON.stringify({...formdata, user_id}),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        setProfile({...profile, data})
+      })
       .catch(console.error);
+      e.target.reset();
   }
   return (
     <div className="profilebackground">
@@ -33,7 +37,7 @@ const ProfileForm = () => {
         <h2>Create User Profile</h2>
         <div className="containerr">
           <form id="profile-form" onSubmit={handleSubmit}>
-            <label for="fname">First Name</label>
+            <label htmlFor="fname">First Name</label>
             <input
               type="text"
               id="fname"
@@ -41,7 +45,7 @@ const ProfileForm = () => {
               value={formdata.First_name}
               onChange={handleChange}
             />
-            <label for="lname">Last Name</label>
+            <label htmlFor="lname">Last Name</label>
             <input
               type="text"
               id="lname"
@@ -49,7 +53,7 @@ const ProfileForm = () => {
               value={formdata.Last_name}
               onChange={handleChange}
             />
-            <label for="gender">Gender</label>
+            <label htmlFor="gender">Gender</label>
             <input
               type="text"
               id="gender"
@@ -57,12 +61,20 @@ const ProfileForm = () => {
               value={formdata.gender}
               onChange={handleChange}
             />
-            <label for="bio">Biography</label>
+            <label htmlFor="bio">Biography</label>
             <input
               type="text"
               id="bio"
               name="bio"
               value={formdata.bio}
+              onChange={handleChange}
+            />
+            <label htmlFor="profile_img">Profile image address</label>
+            <input
+              type="text"
+              id="profile_img"
+              name="profile_img"
+              value={formdata.profile_img}
               onChange={handleChange}
             />
             <button id="btn" type="submit">

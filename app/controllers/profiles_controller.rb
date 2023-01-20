@@ -10,14 +10,14 @@ class ProfilesController < ApplicationController
      end
      
      def create
-        profile = user.profile.create!(profile_params);
+        profile = Profile.create!(profile_params);
         render json: profile, status: :created
      end
 
      def update
         profile = find_profile
         profile.update!(profile_params)
-        render json: profile, status: :updated
+        render json: profile
      end
 
      def destroy

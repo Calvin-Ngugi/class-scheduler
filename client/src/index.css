@@ -51,3 +51,9 @@ code {
   width: 900px;
   background-color: #69a5d0;
 }
+
+.prof{
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
