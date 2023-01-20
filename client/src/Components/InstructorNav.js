@@ -99,14 +99,6 @@ const StudentNav = ({ setUser }) => {
                     All Sessions
                   </Link>
                 </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Add a session
-                  </a>
-                </li>
               </ul>
             </li>
             <li className="nav-item dropdown ms-3">
