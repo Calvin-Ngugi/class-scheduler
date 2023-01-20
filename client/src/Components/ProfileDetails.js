@@ -5,7 +5,7 @@ const ProfileDetails = ({ profile }) => {
     <div>
       <hr />
       <div className="d-flex justify-content-between">
-        <div>
+        <div className="ms-3">
           <h3>{profile.user.username}</h3>
           <div className="d-flex">
             <h5 className="me-2">Name: {profile.First_name}</h5>
@@ -16,7 +16,7 @@ const ProfileDetails = ({ profile }) => {
           <p>Role: {profile.user.role}</p>
         </div>
         <img
-          className="prof"
+          className="prof me-5"
           src={profile.profile_img}
           alt="profile image"
         ></img>
