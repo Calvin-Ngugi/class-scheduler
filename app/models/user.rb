@@ -4,8 +4,6 @@ class User < ApplicationRecord
     validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
     has_one :profile
     has_many :comments
-    has_many :likes, dependent: :destroy
-    has_many :liked_comments, through: :likes, source: :comment
 
     def instructor?
         self.role == "instructor"

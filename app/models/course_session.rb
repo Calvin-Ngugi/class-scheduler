@@ -1,5 +1,5 @@
 class CourseSession < ApplicationRecord
-    belongs_to :course
+    belongs_to :course, dependent: :destroy
     has_many :comments
     validates :description, presence: true, length: {minimum: 10}
 
